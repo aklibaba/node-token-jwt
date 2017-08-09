@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="http://localhost:8080/" method="post">
+    <label for="form-name">Name</label>
+    <input id="form-name" type="text" name="name">
+    <label for="form-age">Age</label>
+    <input id="form-age" type="number" name="age">
+    <button type="submit">Submit</button>
+</form>
+<div id="demo">
+
+</div>
+
+<script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loadDoc();
+    });
+
+
+
+
+    function loadDoc() {
+
+      let name = document.querySelector("#form-name").value;
+      let age = document.querySelector("#form-age").value;
+
+      name = encodeURIComponent(name);
+      age = encodeURIComponent(age);
+
+      const payload = `name=${name}&age=${age}`;
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(JSON.parse(this.response));
+        }
+      };
+      xhttp.open("POST", "http://localhost:8080/", true);
+      xhttp.setRequestHeader("Content-Type", 'application/x-www-form-urlencoded');
+      xhttp.send(payload);
+    }
+
+</script>
+</body>
+</html>

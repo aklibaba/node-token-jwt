@@ -1,0 +1,17 @@
+{
+  "name": "node-token-jwt",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm server.js",
+    "start-watch": "nodemon server.js",
+    "debug-watch": "nodemon --inspect-brk server.js"
+
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^7.4.2",
+    "mongoose": "^4.11.6",
+    "morgan": "^1.8.2"
+  }
+}
